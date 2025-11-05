@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Université Félix Houphouët-Boigny</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #00833e, #006633);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(0,131,62,0.85), rgba(0,102,51,0.85)), url('image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #00833e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #00833e;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #00833e, #006633);
+            border-radius: 2px;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8f4);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            box-shadow: 0 5px 20px rgba(0,131,62,0.1);
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        .intro-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-left: 5px solid #00833e;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h3 {
+            color: #00833e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #00833e, #006633);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,131,62,0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+        }
+
+        .ufr-section {
+            background: #f9f9f9;
+            padding: 5rem 2rem;
+            margin: 0 -100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        .section-intro {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #555;
+        }
+
+        .ufr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .ufr-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ufr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00833e, #006633);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .ufr-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,131,62,0.25);
+            border-color: #00833e;
+        }
+
+        .ufr-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ufr-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00833e, #006633);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,131,62,0.3);
+            transition: transform 0.3s;
+        }
+
+        .ufr-card:hover .ufr-icon {
+            transform: rotateY(360deg);
+        }
+
+        .ufr-card h3 {
+            color: #00833e;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .ufr-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .ufr-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ufr-card li {
+            padding: 0.7rem 0 0.7rem 1.8rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .ufr-card li:last-child {
+            border-bottom: none;
+        }
+
+        .ufr-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00833e;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .ufr-card li:hover {
+            padding-left: 2rem;
+            color: #00833e;
+        }
+
+        .ufr-card li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #00833e;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            background: #f5f5f5;
+        }
+
+        .close:hover {
+            background: #00833e;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .vie-etudiante {
+            background: white;
+        }
+
+        .vie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .vie-card {
+            background: linear-gradient(135deg, #f8fdf9, #ffffff);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e8f5e9;
+            transition: all 0.3s;
+        }
+
+        .vie-card:hover {
+            border-color: #00833e;
+            box-shadow: 0 5px 20px rgba(0,131,62,0.15);
+            transform: translateY(-5px);
+        }
+
+        .vie-card h3 {
+            color: #00833e;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .vie-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .vie-card li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .vie-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00833e;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #00833e;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00833e;
+            box-shadow: 0 0 10px rgba(0,131,62,0.2);
+        }
+
+        .form-group input[type="file"] {
+            padding: 0.5rem;
+            border: 2px dashed #ddd;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: #00833e;
+            background: #f8fdf9;
+        }
+
+        .submissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .submission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+
+        .submission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,131,62,0.2);
+            border-color: #00833e;
+        }
+
+        .submission-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .submission-card h3 {
+            color: #00833e;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .submission-card p {
+            color: #666;
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .submission-card .ufr-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00833e, #006633);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .no-submissions {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #00833e, #006633);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,131,62,0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .challenges-section {
+            background: #fff9f9;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #ffeaea;
+        }
+
+        .challenges-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        .challenges-content h3 {
+            color: #d32f2f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .ufr-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 Université Félix Houphouët-Boigny</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#historique">Historique</a></li>
+                <li><a href="#ufr">UFR & Formations</a></li>
+                <li><a href="#vie-etudiante">Vie Étudiante</a></li>
+                <li><a href="#soumissions">Soumissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Université Félix Houphouët-Boigny (UFHB)</h1>
+            <p>Institution Emblématique de l'Enseignement Supérieur en Côte d'Ivoire</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Cocody, Abidjan - Plus de 60 ans d'Excellence Académique</p>
+            <a href="#ufr" class="btn">Découvrir nos UFR</a>
+            <a href="#contact" class="btn">Nous Contacter</a>
+        </div>
+    </section>
+
+    <section id="apropos">
+        <div class="intro-section">
+            <div class="intro-content">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Une Institution d'Excellence</h2>
+                <p>L'Université Félix Houphouët-Boigny (UFHB) est une institution emblématique de l'enseignement supérieur en Côte d'Ivoire. Située à Abidjan, dans la commune de Cocody, elle accueille chaque année des milliers d'étudiants venus de tout le pays et de la sous-région.</p>
+                <p>À travers ses formations diversifiées, ses infrastructures et sa vie étudiante dynamique, l'UFHB joue un rôle central dans la formation des cadres et la promotion de la recherche scientifique.</p>
+                <p style="font-weight: 600; color: #00833e; font-size: 1.2rem; text-align: center; margin-top: 2rem;">L'UFHB est bien plus qu'un lieu d'apprentissage : c'est un espace de vie, de réflexion et d'innovation.</p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">1959</div>
+                <div class="stat-label">Année de Création</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Hectares de Campus</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">UFR Principales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80K+</div>
+                <div class="stat-label">Étudiants</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historique">
+        <h2>Historique et Localisation</h2>
+        <div class="intro-content">
+            <p>Créée le <strong>11 septembre 1959</strong> sous le nom d'Université d'Abidjan, l'établissement a été rebaptisé <strong>Université Félix Houphouët-Boigny en 1996</strong>, en hommage au premier président de la République de Côte d'Ivoire.</p>
+            
+            <div class="highlight-box">
+                <h3>🏛️ Le Campus de Cocody</h3>
+                <p>L'université est implantée sur un vaste campus de <strong>plus de 200 hectares</strong> à Cocody, un quartier résidentiel et universitaire d'Abidjan. Ce site regroupe les principales infrastructures pédagogiques, administratives et sociales de l'université.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔬 Recherche et Innovation</h3>
+                <p>L'UFHB est un centre de recherche reconnu en Afrique de l'Ouest. Elle abrite plusieurs laboratoires et centres de recherche, notamment le <strong>Pôle scientifique et d'innovation de Bingerville</strong>, dédié à la recherche appliquée dans les domaines de la biotechnologie, de l'environnement et de l'agronomie.</p>
+                <p style="margin-top: 1rem;">L'université collabore avec des institutions nationales et internationales, et participe à des projets de recherche financés par des organismes comme l'AUF (Agence universitaire de la Francophonie) ou l'Union européenne.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🌍 Réseaux et Partenariats</h3>
+                <p>L'UFHB est membre active de l'<strong>Agence universitaire de la Francophonie (AUF)</strong> et de l'<strong>Association des universités africaines</strong>. Elle entretient des collaborations internationales avec des universités et centres de recherche du monde entier, favorisant les échanges d'étudiants et de chercheurs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ufr" class="ufr-section">
+        <h2>Les UFR de l'UFHB - Unités de Formation et de Recherche</h2>
+        <div class="section-intro">
+            L'UFHB est organisée en plusieurs Unités de Formation et de Recherche (UFR), chacune spécialisée dans un domaine précis. Ces formations sont accessibles en <strong>Licence, Master et Doctorat</strong>, selon le système LMD adopté par l'université.
+        </div>
+
+        <div class="ufr-grid">
+            <div class="ufr-card" onclick="openModal('medecine')">
+                <div class="ufr-icon">🏥</div>
+                <h3>UFR des Sciences Médicales</h3>
+                <p class="ufr-description">Formation médicale complète pour des professionnels de santé compétents et dévoués</p>
+                <ul>
+                    <li>Médecine (7 ans)</li>
+                    <li>Pharmacie (6 ans)</li>
+                    <li>Odontologie (6 ans)</li>
+                    <li>Spécialisations médicales</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('droit')">
+                <div class="ufr-icon">⚖️</div>
+                <h3>UFR des Sciences Juridiques, Administratives et Politiques</h3>
+                <p class="ufr-description">Excellence en formation juridique et sciences politiques</p>
+                <ul>
+                    <li>Droit Public</li>
+                    <li>Droit Privé</li>
+                    <li>Science Politique</li>
+                    <li>Droit des Affaires</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('economie')">
+                <div class="ufr-icon">💼</div>
+                <h3>UFR des Sciences Économiques et de Gestion</h3>
+                <p class="ufr-description">Formations professionnalisantes pour les cadres de demain</p>
+                <ul>
+                    <li>Économie</li>
+                    <li>Gestion</li>
+                    <li>Comptabilité</li>
+                    <li>Finance d'entreprise</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('lettres')">
+                <div class="ufr-icon">📚</div>
+                <h3>UFR des Lettres, Langues et Civilisations</h3>
+                <p class="ufr-description">Culture, patrimoine intellectuel et développement de l'esprit critique</p>
+                <ul>
+                    <li>Français</li>
+                    <li>Anglais</li>
+                    <li>Linguistique</li>
+                    <li>Philosophie</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('sciences')">
+                <div class="ufr-icon">🔬</div>
+                <h3>UFR des Sciences Fondamentales et Appliquées</h3>
+                <p class="ufr-description">Sciences de pointe et recherche fondamentale</p>
+                <ul>
+                    <li>Physique</li>
+                    <li>Chimie</li>
+                    <li>Géologie</li>
+                    <li>Sciences de la Terre</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('maths')">
+                <div class="ufr-icon">🔢</div>
+                <h3>UFR de Mathématiques et Informatique</h3>
+                <p class="ufr-description">Formations en mathématiques et technologies de l'information</p>
+                <ul>
+                    <li>Mathématiques Pures</li>
+                    <li>Mathématiques Appliquées</li>
+                    <li>Informatique (BDGL, RIST)</li>
+                    <li>Data Science</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('biosciences')">
+                <div class="ufr-icon">🧬</div>
+                <h3>UFR des Biosciences</h3>
+                <p class="ufr-description">Sciences de la vie, environnement et biodiversité</p>
+                <ul>
+                    <li>Biologie Animale</li>
+                    <li>Biologie Végétale</li>
+                    <li>Microbiologie</li>
+                    <li>Écologie</li>
+                </ul>
+            </div>
+
+            <div class="ufr-card" onclick="openModal('education')">
+                <div class="ufr-icon">👨‍🏫</div>
+                <h3>UFR des Sciences de l'Éducation et de la Formation</h3>
+                <p class="ufr-description">Formation des formateurs et professionnels de l'éducation</p>
+                <ul>
+                    <li>Pédagogie</li>
+                    <li>Sciences de l'Éducation</li>
+                    <li>Formation des Enseignants</li>
+                    <li>Ingénierie Pédagogique</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="challenges">
+        <div class="challenges-section">
+            <div class="challenges-content">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #d32f2f;">Défis et Perspectives</h2>
+                <h3>⚠️ Défis Actuels</h3>
+                <p>Malgré sa réputation historique et sa rénovation complète en 2012 suite à la crise post-électorale, l'UFHB fait face à plusieurs défis importants :</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Problèmes de gestion administrative et financière</li>
+                    <li>Manque cruel de matériel pédagogique et de laboratoires équipés</li>
+                    <li>Insuffisance de locaux adaptés au nombre croissant d'étudiants</li>
+                    <li>Dégradation prématurée des installations depuis la rénovation de 2012</li>
+                    <li>Surpopulation dans les amphithéâtres et salles de cours</li>
+                </ul>
+                
+                <h3>🚀 Perspectives d'Avenir</h3>
+                <p>L'UFHB travaille activement à relever ces défis grâce à :</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Des partenariats renforcés avec des institutions internationales</li>
+                    <li>Des programmes de modernisation des infrastructures</li>
+                    <li>Le développement de formations en ligne et hybrides</li>
+                    <li>La recherche de financements alternatifs pour l'équipement</li>
+                    <li>La valorisation de la recherche scientifique et de l'innovation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="vie-etudiante" class="vie-etudiante">
+        <h2>La Vie Étudiante à l'UFHB</h2>
+        <div class="intro-content" style="margin-bottom: 3rem;">
+            <p>La vie étudiante à l'UFHB est riche et variée. Le campus dispose de plusieurs résidences universitaires, de restaurants, de bibliothèques, de centres médicaux et d'espaces sportifs. Les étudiants participent à des activités culturelles, scientifiques et associatives tout au long de l'année.</p>
+        </div>
+
+        <div class="vie-grid">
+            <div class="vie-card">
+                <h3>🏠 Infrastructures</h3>
+                <ul>
+                    <li>Résidences universitaires</li>
+                    <li>Restaurants et cafétérias</li>
+                    <li>Bibliothèques modernes</li>
+                    <li>Centres médicaux</li>
+                    <li>Espaces sportifs</li>
+                </ul>
+            </div>
+
+            <div class="vie-card">
+                <h3>🎭 Événements Marquants</h3>
+                <ul>
+                    <li>Cérémonies de remise de toges</li>
+                    <li>Soutenances de mémoire et thèse</li>
+                    <li>Journées scientifiques</li>
+                    <li>Forums étudiants</li>
+                    <li>Concours "Ma thèse en 180 secondes"</li>
+                </ul>
+            </div>
+
+            <div class="vie-card">
+                <h3>🤝 Engagement Associatif</h3>
+                <ul>
+                    <li>Clubs culturels</li>
+                    <li>Associations sportives</li>
+                    <li>Clubs technologie</li>
+                    <li>Associations entrepreneuriat</li>
+                    <li>Groupes de recherche</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="soumissions">
+        <h2>Liste des Soumissions</h2>
+        <div class="intro-content" style="margin-bottom: 2rem; text-align: center;">
+            <p>Découvrez toutes les demandes de contact reçues par notre université.</p>
+        </div>
+        <div id="submissions-container" style="min-height: 200px;">
+            <div style="text-align: center; padding: 2rem;">
+                <p>Chargement des soumissions...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contactez-Nous</h2>
+        <div id="alert-container"></div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label>Nom Complet *</label>
+                <input type="text" name="nom" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" name="email" required placeholder="votre.email@exemple.com">
+            </div>
+            <div class="form-group">
+                <label>UFR d'Intérêt *</label>
+                <select name="ufr" required>
+                    <option value="">Sélectionnez une UFR</option>
+                    <option>UFR des Sciences Médicales</option>
+                    <option>UFR des Sciences Juridiques, Administratives et Politiques</option>
+                    <option>UFR des Sciences Économiques et de Gestion</option>
+                    <option>UFR des Lettres, Langues et Civilisations</option>
+                    <option>UFR des Sciences Fondamentales et Appliquées</option>
+                    <option>UFR de Mathématiques et Informatique</option>
+                    <option>UFR des Biosciences</option>
+                    <option>UFR des Sciences de l'Éducation et de la Formation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message *</label>
+                <textarea name="message" rows="5" required placeholder="Votre message..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Photo (optionnel)</label>
+                <input type="file" name="photo" accept="image/*" id="photo-input">
+                <small style="color: #666; margin-top: 0.5rem; display: block;">Formats acceptés : JPG, PNG, GIF (Max 5MB)</small>
+            </div>
+            <button type="submit" class="submit-btn" id="submit-btn">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Université Félix Houphouët-Boigny - Tous droits réservés</p>
+        <p>Cocody, Abidjan, Côte d'Ivoire</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Fondée en 1959 - Institution d'Excellence Académique</p>
+        <p>Ceci n'est pas le site Officiel de l'université, il est purement fictif juste pour présenter ce TP, Merci!</p>
+    </footer>
+
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://h5005baiaj.execute-api.eu-north-1.amazonaws.com';
+        const S3_BUCKET = 'mon-site-ufhb-j';
+
+        const modalContent = {
+            medecine: {
+                title: "UFR des Sciences Médicales",
+                description: "Formation médicale complète pour des professionnels de santé compétents et dévoués, avec des programmes allant de la médecine générale aux spécialisations pointues.",
+                details: [
+                    "Médecine générale (7 ans d'études)",
+                    "Pharmacie (6 ans d'études)",
+                    "Odontologie (6 ans d'études)",
+                    "Spécialisations médicales diverses",
+                    "Formation continue pour professionnels de santé"
+                ]
+            },
+            droit: {
+                title: "UFR des Sciences Juridiques, Administratives et Politiques",
+                description: "Excellence en formation juridique et sciences politiques, préparant aux carrières dans la justice, l'administration et les relations internationales.",
+                details: [
+                    "Droit Public et Constitutionnel",
+                    "Droit Privé et des Affaires",
+                    "Science Politique et Relations Internationales",
+                    "Droit de l'Environnement et Développement Durable",
+                    "Carrières Judiciaires et Administratives"
+                ]
+            },
+            economie: {
+                title: "UFR des Sciences Économiques et de Gestion",
+                description: "Formations professionnalisantes pour les cadres de demain dans les domaines de l'économie, de la gestion et de la finance.",
+                details: [
+                    "Économie du Développement",
+                    "Gestion des Entreprises",
+                    "Comptabilité et Audit",
+                    "Finance d'Entreprise et Marchés",
+                    "Marketing et Commerce International"
+                ]
+            },
+            lettres: {
+                title: "UFR des Lettres, Langues et Civilisations",
+                description: "Culture, patrimoine intellectuel et développement de l'esprit critique à travers l'étude des langues, littératures et civilisations.",
+                details: [
+                    "Littératures Française et Comparée",
+                    "Langues et Civilisations Anglaise",
+                    "Linguistique et Didactique des Langues",
+                    "Philosophie et Sciences Humaines",
+                    "Études Africaines et Interculturelles"
+                ]
+            },
+            sciences: {
+                title: "UFR des Sciences Fondamentales et Appliquées",
+                description: "Sciences de pointe et recherche fondamentale dans les domaines de la physique, chimie et sciences de la Terre.",
+                details: [
+                    "Physique Fondamentale et Appliquée",
+                    "Chimie Analytique et Organique",
+                    "Géologie et Sciences de la Terre",
+                    "Énergies Renouvelables",
+                    "Recherche en Sciences Exactes"
+                ]
+            },
+            maths: {
+                title: "UFR de Mathématiques et Informatique",
+                description: "Formations en mathématiques et technologies de l'information, préparant aux métiers de la data science et du développement informatique.",
+                details: [
+                    "Mathématiques Pures et Fondamentales",
+                    "Mathématiques Appliquées et Modélisation",
+                    "Informatique (BDGL, RIST)",
+                    "Data Science et Intelligence Artificielle",
+                    "Cybersécurité et Réseaux"
+                ]
+            },
+            biosciences: {
+                title: "UFR des Biosciences",
+                description: "Sciences de la vie, environnement et biodiversité, avec des applications en biotechnologie et développement durable.",
+                details: [
+                    "Biologie Animale et Physiologie",
+                    "Biologie Végétale et Biotechnologie",
+                    "Microbiologie et Biologie Moléculaire",
+                    "Écologie et Biodiversité",
+                    "Sciences de l'Environnement"
+                ]
+            },
+            education: {
+                title: "UFR des Sciences de l'Éducation et de la Formation",
+                description: "Formation des formateurs et professionnels de l'éducation, avec une approche moderne de la pédagogie et de l'ingénierie éducative.",
+                details: [
+                    "Pédagogie et Didactique",
+                    "Sciences de l'Éducation",
+                    "Formation des Enseignants",
+                    "Ingénierie Pédagogique",
+                    "Éducation Spécialisée et Inclusive"
+                ]
+            }
+        };
+
+        function openModal(ufrId) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            const content = modalContent[ufrId];
+            
+            if (content) {
+                modalBody.innerHTML = `
+                    <h2 style="color: #00833e; margin-bottom: 1rem;">${content.title}</h2>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">${content.description}</p>
+                    <h3 style="color: #00833e; margin-bottom: 1rem;">Formations proposées :</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        ${content.details.map(item => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #eee; position: relative; padding-left: 1.5rem;">
+                            <span style="position: absolute; left: 0; color: #00833e;">→</span> ${item}
+                        </li>`).join('')}
+                    </ul>
+                    <div style="margin-top: 2rem; padding: 1rem; background: #f8fdf9; border-radius: 10px;">
+                        <p style="margin: 0; color: #555;"><strong>Information :</strong> Toutes nos formations suivent le système LMD (Licence-Master-Doctorat) et sont accessibles en formation initiale et continue.</p>
+                    </div>
+                `;
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'modal' || event.target.className === 'close') {
+                document.getElementById('modal').style.display = 'none';
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alert-container');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(event.target);
+            const photoFile = formData.get('photo');
+            
+            const data = {
+                nom: formData.get('nom'),
+                email: formData.get('email'),
+                ufr: formData.get('ufr'),
+                message: formData.get('message'),
+                imageUrl: null
+            };
+            
+            try {
+                // Upload image to S3 if present
+                if (photoFile && photoFile.size > 0) {
+                    submitBtn.textContent = 'Upload de l\'image...';
+                    const imageUrl = await uploadImageToS3(photoFile);
+                    data.imageUrl = imageUrl;
+                }
+                
+                // Send data to API
+                submitBtn.textContent = 'Envoi des données...';
+                const response = await fetch(`${API_URL}/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showAlert('Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
+                    event.target.reset();
+                    // Reload submissions
+                    loadSubmissions();
+                } else {
+                    throw new Error('Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.', 'error');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        async function uploadImageToS3(file) {
+            // Get pre-signed URL from Lambda
+            const response = await fetch(`${API_URL}/upload-url`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fileName: file.name,
+                    fileType: file.type
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Impossible d\'obtenir l\'URL de téléchargement');
+            }
+            
+            const { uploadUrl, fileUrl } = await response.json();
+            
+            // Upload file to S3
+            const uploadResponse = await fetch(uploadUrl, {
+                method: 'PUT',
+                body: file,
+                headers: {
+                    'Content-Type': file.type
+                }
+            });
+            
+            if (!uploadResponse.ok) {
+                throw new Error('Erreur lors du téléchargement de l\'image');
+            }
+            
+            return fileUrl;
+        }
+
+        async function loadSubmissions() {
+            const container = document.getElementById('submissions-container');
+            
+            try {
+                const response = await fetch(`${API_URL}/submissions`);
+                
+                if (!response.ok) {
+                    throw new Error('Erreur lors du chargement des soumissions');
+                }
+                
+                const submissions = await response.json();
+                
+                if (submissions.length === 0) {
+                    container.innerHTML = '<div class="no-submissions">Aucune soumission pour le moment.</div>';
+                    return;
+                }
+                
+                container.innerHTML = `
+                    <div class="submissions-grid">
+                        ${submissions.map(sub => `
+                            <div class="submission-card">
+                                ${sub.imageUrl ? `<img src="${sub.imageUrl}" alt="Photo de ${sub.nom}" class="submission-image" onerror="this.style.display='none'">` : ''}
+                                <h3>${sub.nom}</h3>
+                                <p><strong>Email:</strong> ${sub.email}</p>
+                                <p><strong>Message:</strong> ${sub.message}</p>
+                                <span class="ufr-badge">${sub.ufr}</span>
+                                ${sub.timestamp ? `<p style="font-size: 0.85rem; color: #999; margin-top: 1rem;">Soumis le ${new Date(sub.timestamp * 1000).toLocaleDateString('fr-FR')}</p>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Erreur:', error);
+                container.innerHTML = '<div class="no-submissions">Erreur lors du chargement des soumissions.</div>';
+            }
+        }
+
+        // Load submissions on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSubmissions();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
