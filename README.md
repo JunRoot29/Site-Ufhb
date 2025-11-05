@@ -67,6 +67,10 @@ Pour toute question ou suggestion :
 **Junior Agbenonzan**  
 📧 junioragbenonzan31@gmail.com
 
+
+<div align="center">
+Fait avec ❤️ et ☕ à Abidjan | © 2025 Junior Kossivi
+</div>
 ======================================================================================================================================================
 
 ======================================================================================================================================================
@@ -140,4 +144,7 @@ For questions or suggestions:
 📧 junioragbenonzan31@gmail.com
 ```
 
+<div align="center">
+Made with ❤️ and ☕ in Abidjan | © 2025 Junior Kossivi
+</div>
 
