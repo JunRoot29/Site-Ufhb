@@ -973,14 +973,24 @@
                 <label>UFR d'Intérêt *</label>
                 <select name="ufr" required>
                     <option value="">Sélectionnez une UFR</option>
-                    <option>UFR des Sciences Médicales</option>
-                    <option>UFR des Sciences Juridiques, Administratives et Politiques</option>
-                    <option>UFR des Sciences Économiques et de Gestion</option>
-                    <option>UFR des Lettres, Langues et Civilisations</option>
-                    <option>UFR des Sciences Fondamentales et Appliquées</option>
-                    <option>UFR de Mathématiques et Informatique</option>
-                    <option>UFR des Biosciences</option>
-                    <option>UFR des Sciences de l'Éducation et de la Formation</option>
+                    <option value="medecine">UFR des Sciences Médicales</option>
+                    <option value="droit">UFR des Sciences Juridiques, Administratives et Politiques</option>
+                    <option value="economie">UFR des Sciences Économiques et de Gestion</option>
+                    <option value="lettres">UFR des Lettres, Langues et Civilisations</option>
+                    <option value="sciences">UFR des Sciences Fondamentales et Appliquées</option>
+                    <option value="maths">UFR de Mathématiques et Informatique</option>
+                    <option value="biosciences">UFR des Biosciences</option>
+                    <option value="education">UFR des Sciences de l'Éducation et de la Formation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Type de Demande *</label>
+                <select name="type" required>
+                    <option value="">Sélectionnez un type</option>
+                    <option value="information">Demande d'information</option>
+                    <option value="inscription">Demande d'inscription</option>
+                    <option value="partenariat">Proposition de partenariat</option>
+                    <option value="autre">Autre</option>
                 </select>
             </div>
             <div class="form-group">
@@ -988,152 +998,221 @@
                 <textarea name="message" rows="5" required placeholder="Votre message..."></textarea>
             </div>
             <div class="form-group">
-                <label>Photo (optionnel)</label>
-                <input type="file" name="photo" accept="image/*" id="photo-input">
-                <small style="color: #666; margin-top: 0.5rem; display: block;">Formats acceptés : JPG, PNG, GIF (Max 5MB)</small>
+                <label>Pièce Jointe (optionnel)</label>
+                <input type="file" name="piece-jointe">
             </div>
-            <button type="submit" class="submit-btn" id="submit-btn">Envoyer</button>
+            <button type="submit" class="submit-btn">Envoyer votre demande</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2025 Université Félix Houphouët-Boigny - Tous droits réservés</p>
-        <p>Cocody, Abidjan, Côte d'Ivoire</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Fondée en 1959 - Institution d'Excellence Académique</p>
-        <p>Ceci n'est pas le site Officiel de l'université, il est purement fictif juste pour présenter ce TP, Merci!</p>
+        <p>📍 Université Félix Houphouët-Boigny (UFHB) - Cocody, Abidjan, Côte d'Ivoire</p>
+        <p>📞 Contact: +225 XX XX XX XX | ✉️ Email: contact@ufhb.edu.ci</p>
+        <p style="margin-top: 1.5rem;">© 2024 Université Félix Houphouët-Boigny - Tous droits réservés</p>
     </footer>
 
-    <div id="modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-body"></div>
+    <!-- Modals pour les UFR -->
+    <div id="modal-medecine" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('medecine')">&times;</span>
+            <h2>UFR des Sciences Médicales</h2>
+            <p>L'UFR des Sciences Médicales forme les futurs médecins, pharmaciens et dentistes de la Côte d'Ivoire et de la sous-région. Elle dispose d'un centre hospitalier universitaire (CHU) pour la formation pratique des étudiants.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Médecine générale (7 ans)</li>
+                <li>Spécialités médicales</li>
+                <li>Pharmacie (6 ans)</li>
+                <li>Odontologie (6 ans)</li>
+                <li>Formations paramédicales</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Médecins, pharmaciens, dentistes, chercheurs en sciences médicales, cadres de santé publique.</p>
+        </div>
+    </div>
+
+    <div id="modal-droit" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('droit')">&times;</span>
+            <h2>UFR des Sciences Juridiques, Administratives et Politiques</h2>
+            <p>Cette UFR forme des juristes, administrateurs et politologues capables d'évoluer dans les secteurs public et privé, ainsi que dans les organisations internationales.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Droit public</li>
+                <li>Droit privé</li>
+                <li>Science politique</li>
+                <li>Administration publique</li>
+                <li>Droit des affaires</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Avocats, magistrats, administrateurs, diplomates, consultants, chercheurs en sciences politiques.</p>
+        </div>
+    </div>
+
+    <div id="modal-economie" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('economie')">&times;</span>
+            <h2>UFR des Sciences Économiques et de Gestion</h2>
+            <p>Cette UFR forme des économistes, gestionnaires et financiers capables d'analyser les enjeux économiques contemporains et de manager efficacement les organisations.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Économie</li>
+                <li>Gestion</li>
+                <li>Comptabilité</li>
+                <li>Finance</li>
+                <li>Marketing</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Économistes, analystes financiers, comptables, chefs d'entreprise, cadres dans les banques et institutions financières.</p>
+        </div>
+    </div>
+
+    <div id="modal-lettres" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('lettres')">&times;</span>
+            <h2>UFR des Lettres, Langues et Civilisations</h2>
+            <p>Cette UFR explore les langues, les littératures et les civilisations pour former des spécialistes de la communication, de l'enseignement et de la recherche en sciences humaines.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Lettres modernes</li>
+                <li>Linguistique</li>
+                <li>Philosophie</li>
+                <li>Langues étrangères</li>
+                <li>Civilisations</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Enseignants, chercheurs, traducteurs, journalistes, communicateurs, éditeurs.</p>
+        </div>
+    </div>
+
+    <div id="modal-sciences" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sciences')">&times;</span>
+            <h2>UFR des Sciences Fondamentales et Appliquées</h2>
+            <p>Cette UFR forme des scientifiques dans les domaines de la physique, de la chimie et des sciences de la Terre, avec une approche à la fois fondamentale et appliquée.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Physique</li>
+                <li>Chimie</li>
+                <li>Géologie</li>
+                <li>Sciences de la Terre</li>
+                <li>Environnement</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Chercheurs, ingénieurs, géologues, enseignants, experts en environnement.</p>
+        </div>
+    </div>
+
+    <div id="modal-maths" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('maths')">&times;</span>
+            <h2>UFR de Mathématiques et Informatique</h2>
+            <p>Cette UFR forme des mathématiciens et informaticiens capables de répondre aux défis technologiques du 21e siècle, avec des formations en mathématiques pures, appliquées et en informatique.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Mathématiques pures</li>
+                <li>Mathématiques appliquées</li>
+                <li>Informatique fondamentale</li>
+                <li>Informatique de gestion</li>
+                <li>Data Science</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Mathématiciens, statisticiens, développeurs, data scientists, enseignants, chercheurs.</p>
+        </div>
+    </div>
+
+    <div id="modal-biosciences" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('biosciences')">&times;</span>
+            <h2>UFR des Biosciences</h2>
+            <p>Cette UFR explore les sciences de la vie dans toute leur diversité, de la biologie moléculaire à l'écologie, en passant par la microbiologie et la biodiversité.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Biologie animale</li>
+                <li>Biologie végétale</li>
+                <li>Microbiologie</li>
+                <li>Écologie</li>
+                <li>Biotechnologie</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Biologistes, écologues, microbiologistes, chercheurs, experts en environnement, enseignants.</p>
+        </div>
+    </div>
+
+    <div id="modal-education" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('education')">&times;</span>
+            <h2>UFR des Sciences de l'Éducation et de la Formation</h2>
+            <p>Cette UFR forme les professionnels de l'éducation et de la formation, en s'appuyant sur les sciences de l'éducation, la pédagogie et les technologies éducatives.</p>
+            <h3>Formations proposées</h3>
+            <ul>
+                <li>Sciences de l'éducation</li>
+                <li>Pédagogie</li>
+                <li>Formation des enseignants</li>
+                <li>Ingénierie pédagogique</li>
+                <li>Technologies éducatives</li>
+            </ul>
+            <h3>Débouchés</h3>
+            <p>Enseignants, formateurs, conseillers pédagogiques, chercheurs en éducation, concepteurs de formations.</p>
         </div>
     </div>
 
     <script>
-        const API_URL = 'https://h5005baiaj.execute-api.eu-north-1.amazonaws.com';
-        const S3_BUCKET = 'mon-site-ufhb-j';
+        // Gestion des modals
+        function openModal(ufr) {
+            document.getElementById(`modal-${ufr}`).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-        const modalContent = {
-            medecine: {
-                title: "UFR des Sciences Médicales",
-                description: "Formation médicale complète pour des professionnels de santé compétents et dévoués, avec des programmes allant de la médecine générale aux spécialisations pointues.",
-                details: [
-                    "Médecine générale (7 ans d'études)",
-                    "Pharmacie (6 ans d'études)",
-                    "Odontologie (6 ans d'études)",
-                    "Spécialisations médicales diverses",
-                    "Formation continue pour professionnels de santé"
-                ]
-            },
-            droit: {
-                title: "UFR des Sciences Juridiques, Administratives et Politiques",
-                description: "Excellence en formation juridique et sciences politiques, préparant aux carrières dans la justice, l'administration et les relations internationales.",
-                details: [
-                    "Droit Public et Constitutionnel",
-                    "Droit Privé et des Affaires",
-                    "Science Politique et Relations Internationales",
-                    "Droit de l'Environnement et Développement Durable",
-                    "Carrières Judiciaires et Administratives"
-                ]
-            },
-            economie: {
-                title: "UFR des Sciences Économiques et de Gestion",
-                description: "Formations professionnalisantes pour les cadres de demain dans les domaines de l'économie, de la gestion et de la finance.",
-                details: [
-                    "Économie du Développement",
-                    "Gestion des Entreprises",
-                    "Comptabilité et Audit",
-                    "Finance d'Entreprise et Marchés",
-                    "Marketing et Commerce International"
-                ]
-            },
-            lettres: {
-                title: "UFR des Lettres, Langues et Civilisations",
-                description: "Culture, patrimoine intellectuel et développement de l'esprit critique à travers l'étude des langues, littératures et civilisations.",
-                details: [
-                    "Littératures Française et Comparée",
-                    "Langues et Civilisations Anglaise",
-                    "Linguistique et Didactique des Langues",
-                    "Philosophie et Sciences Humaines",
-                    "Études Africaines et Interculturelles"
-                ]
-            },
-            sciences: {
-                title: "UFR des Sciences Fondamentales et Appliquées",
-                description: "Sciences de pointe et recherche fondamentale dans les domaines de la physique, chimie et sciences de la Terre.",
-                details: [
-                    "Physique Fondamentale et Appliquée",
-                    "Chimie Analytique et Organique",
-                    "Géologie et Sciences de la Terre",
-                    "Énergies Renouvelables",
-                    "Recherche en Sciences Exactes"
-                ]
-            },
-            maths: {
-                title: "UFR de Mathématiques et Informatique",
-                description: "Formations en mathématiques et technologies de l'information, préparant aux métiers de la data science et du développement informatique.",
-                details: [
-                    "Mathématiques Pures et Fondamentales",
-                    "Mathématiques Appliquées et Modélisation",
-                    "Informatique (BDGL, RIST)",
-                    "Data Science et Intelligence Artificielle",
-                    "Cybersécurité et Réseaux"
-                ]
-            },
-            biosciences: {
-                title: "UFR des Biosciences",
-                description: "Sciences de la vie, environnement et biodiversité, avec des applications en biotechnologie et développement durable.",
-                details: [
-                    "Biologie Animale et Physiologie",
-                    "Biologie Végétale et Biotechnologie",
-                    "Microbiologie et Biologie Moléculaire",
-                    "Écologie et Biodiversité",
-                    "Sciences de l'Environnement"
-                ]
-            },
-            education: {
-                title: "UFR des Sciences de l'Éducation et de la Formation",
-                description: "Formation des formateurs et professionnels de l'éducation, avec une approche moderne de la pédagogie et de l'ingénierie éducative.",
-                details: [
-                    "Pédagogie et Didactique",
-                    "Sciences de l'Éducation",
-                    "Formation des Enseignants",
-                    "Ingénierie Pédagogique",
-                    "Éducation Spécialisée et Inclusive"
-                ]
-            }
-        };
+        function closeModal(ufr) {
+            document.getElementById(`modal-${ufr}`).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-        function openModal(ufrId) {
-            const modal = document.getElementById('modal');
-            const modalBody = document.getElementById('modal-body');
-            const content = modalContent[ufrId];
+        // Fermer les modals en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Gestion du formulaire de contact
+        function handleSubmit(event) {
+            event.preventDefault();
             
-            if (content) {
-                modalBody.innerHTML = `
-                    <h2 style="color: #00833e; margin-bottom: 1rem;">${content.title}</h2>
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">${content.description}</p>
-                    <h3 style="color: #00833e; margin-bottom: 1rem;">Formations proposées :</h3>
-                    <ul style="list-style-type: none; padding-left: 0;">
-                        ${content.details.map(item => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #eee; position: relative; padding-left: 1.5rem;">
-                            <span style="position: absolute; left: 0; color: #00833e;">→</span> ${item}
-                        </li>`).join('')}
-                    </ul>
-                    <div style="margin-top: 2rem; padding: 1rem; background: #f8fdf9; border-radius: 10px;">
-                        <p style="margin: 0; color: #555;"><strong>Information :</strong> Toutes nos formations suivent le système LMD (Licence-Master-Doctorat) et sont accessibles en formation initiale et continue.</p>
-                    </div>
-                `;
-                modal.style.display = 'flex';
-            }
+            const formData = new FormData(event.target);
+            const data = {
+                nom: formData.get('nom'),
+                email: formData.get('email'),
+                ufr: formData.get('ufr'),
+                type: formData.get('type'),
+                message: formData.get('message'),
+                date: new Date().toLocaleString('fr-FR')
+            };
+
+            // Récupérer les soumissions existantes
+            let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+            
+            // Ajouter la nouvelle soumission
+            submissions.push(data);
+            
+            // Sauvegarder dans le localStorage
+            localStorage.setItem('submissions', JSON.stringify(submissions));
+            
+            // Afficher un message de succès
+            showAlert('Votre demande a été envoyée avec succès !', 'success');
+            
+            // Réinitialiser le formulaire
+            event.target.reset();
+            
+            // Actualiser l'affichage des soumissions
+            displaySubmissions();
         }
 
-        function closeModal(event) {
-            if (!event || event.target.id === 'modal' || event.target.className === 'close') {
-                document.getElementById('modal').style.display = 'none';
-            }
-        }
-
+        // Afficher une alerte
         function showAlert(message, type) {
             const alertContainer = document.getElementById('alert-container');
             const alert = document.createElement('div');
@@ -1141,161 +1220,96 @@
             alert.textContent = message;
             alertContainer.appendChild(alert);
             
+            // Supprimer l'alerte après 5 secondes
             setTimeout(() => {
                 alert.remove();
             }, 5000);
         }
 
-        async function handleSubmit(event) {
-            event.preventDefault();
-            const submitBtn = document.getElementById('submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            const formData = new FormData(event.target);
-            const photoFile = formData.get('photo');
-            
-            const data = {
-                nom: formData.get('nom'),
-                email: formData.get('email'),
-                ufr: formData.get('ufr'),
-                message: formData.get('message'),
-                imageUrl: null
-            };
-            
-            try {
-                // Upload image to S3 if present
-                if (photoFile && photoFile.size > 0) {
-                    submitBtn.textContent = 'Upload de l\'image...';
-                    const imageUrl = await uploadImageToS3(photoFile);
-                    data.imageUrl = imageUrl;
-                }
-                
-                // Send data to API
-                submitBtn.textContent = 'Envoi des données...';
-                const response = await fetch(`${API_URL}/contact`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                if (response.ok) {
-                    showAlert('Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
-                    event.target.reset();
-                    // Reload submissions
-                    loadSubmissions();
-                } else {
-                    throw new Error('Erreur lors de l\'envoi');
-                }
-            } catch (error) {
-                console.error('Erreur:', error);
-                showAlert('Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.', 'error');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-
-        async function uploadImageToS3(file) {
-            // Get pre-signed URL from Lambda
-            const response = await fetch(`${API_URL}/upload-url`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    fileName: file.name,
-                    fileType: file.type
-                })
-            });
-            
-            if (!response.ok) {
-                throw new Error('Impossible d\'obtenir l\'URL de téléchargement');
-            }
-            
-            const { uploadUrl, fileUrl } = await response.json();
-            
-            // Upload file to S3
-            const uploadResponse = await fetch(uploadUrl, {
-                method: 'PUT',
-                body: file,
-                headers: {
-                    'Content-Type': file.type
-                }
-            });
-            
-            if (!uploadResponse.ok) {
-                throw new Error('Erreur lors du téléchargement de l\'image');
-            }
-            
-            return fileUrl;
-        }
-
-        async function loadSubmissions() {
+        // Afficher les soumissions
+        function displaySubmissions() {
             const container = document.getElementById('submissions-container');
+            const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
             
-            try {
-                const response = await fetch(`${API_URL}/submissions`);
-                
-                if (!response.ok) {
-                    throw new Error('Erreur lors du chargement des soumissions');
-                }
-                
-                const submissions = await response.json();
-                
-                if (submissions.length === 0) {
-                    container.innerHTML = '<div class="no-submissions">Aucune soumission pour le moment.</div>';
-                    return;
-                }
-                
+            if (submissions.length === 0) {
                 container.innerHTML = `
-                    <div class="submissions-grid">
-                        ${submissions.map(sub => `
-                            <div class="submission-card">
-                                ${sub.imageUrl ? `<img src="${sub.imageUrl}" alt="Photo de ${sub.nom}" class="submission-image" onerror="this.style.display='none'">` : ''}
-                                <h3>${sub.nom}</h3>
-                                <p><strong>Email:</strong> ${sub.email}</p>
-                                <p><strong>Message:</strong> ${sub.message}</p>
-                                <span class="ufr-badge">${sub.ufr}</span>
-                                ${sub.timestamp ? `<p style="font-size: 0.85rem; color: #999; margin-top: 1rem;">Soumis le ${new Date(sub.timestamp * 1000).toLocaleDateString('fr-FR')}</p>` : ''}
-                            </div>
-                        `).join('')}
+                    <div class="no-submissions">
+                        <p>Aucune soumission pour le moment.</p>
+                        <p>Soyez le premier à nous contacter !</p>
                     </div>
                 `;
-            } catch (error) {
-                console.error('Erreur:', error);
-                container.innerHTML = '<div class="no-submissions">Erreur lors du chargement des soumissions.</div>';
+                return;
             }
+            
+            container.innerHTML = `
+                <div class="submissions-grid">
+                    ${submissions.map((submission, index) => `
+                        <div class="submission-card">
+                            <h3>${submission.nom}</h3>
+                            <p><strong>Email:</strong> ${submission.email}</p>
+                            <p><strong>UFR:</strong> ${getUfrName(submission.ufr)}</p>
+                            <p><strong>Type:</strong> ${getTypeName(submission.type)}</p>
+                            <p><strong>Message:</strong> ${submission.message}</p>
+                            <p><strong>Date:</strong> ${submission.date}</p>
+                            <div class="ufr-badge">${getUfrName(submission.ufr)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
         }
 
-        // Load submissions on page load
+        // Obtenir le nom complet de l'UFR
+        function getUfrName(ufrCode) {
+            const ufrNames = {
+                'medecine': 'UFR des Sciences Médicales',
+                'droit': 'UFR des Sciences Juridiques, Administratives et Politiques',
+                'economie': 'UFR des Sciences Économiques et de Gestion',
+                'lettres': 'UFR des Lettres, Langues et Civilisations',
+                'sciences': 'UFR des Sciences Fondamentales et Appliquées',
+                'maths': 'UFR de Mathématiques et Informatique',
+                'biosciences': 'UFR des Biosciences',
+                'education': 'UFR des Sciences de l\'Éducation et de la Formation'
+            };
+            return ufrNames[ufrCode] || ufrCode;
+        }
+
+        // Obtenir le nom complet du type de demande
+        function getTypeName(typeCode) {
+            const typeNames = {
+                'information': 'Demande d\'information',
+                'inscription': 'Demande d\'inscription',
+                'partenariat': 'Proposition de partenariat',
+                'autre': 'Autre'
+            };
+            return typeNames[typeCode] || typeCode;
+        }
+
+        // Initialiser l'affichage des soumissions
         document.addEventListener('DOMContentLoaded', function() {
-            loadSubmissions();
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            displaySubmissions();
+            
+            // Animation au défilement
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les éléments à animer
+            document.querySelectorAll('.ufr-card, .stat-card, .vie-card').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
             });
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
         });
     </script>
 </body>
